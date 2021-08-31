@@ -1,0 +1,41 @@
+﻿@using Onlineshop.Models;
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Mvc.Common;
+@model X.PagedList.IPagedList<Products>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<br />
+<br />
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-4">
+            <div class="card mb-4">
+                @*<div class="card-header">
+                    <h3 class="my-0 font-weight-normal">
+                        <label style="font-size: 23px; color: steelblue">@product.Name</label>
+                    </h3>
+                </div>*@
+                <a asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
+                    <img src="~/@product.Image" alt="Card Image" class="card-img-top" style="height: 380px;" />
+                </a>
+                
+                <div class="card-header">
+                    <h3 class="my-0 font-weight-normal">
+                        <label style="font-size: 23px; color:black; font-style:italic">@product.Name</label>
+                    </h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <label style="font-size: 16px;color: dimgrey; font-weight:lighter"><b>Price : @product.Price MKD</b></label>
+                        </div>
+                        <a asp-action="Details" asp-controller="Home" asp-route-id="@product.Id" class="btn btn-outline-success pull-right btn-outline-info">Deatils</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div style="font-size:24 pt; align-content:center">
+    @Html.PagedListPager(Model, c => Href("~/Customer/Home/Index?page=" + c), PagedListRenderOptionsBase.PageNumbersOnly)
+</div>

@@ -1,0 +1,62 @@
+﻿@using Onlineshop.Models;
+@model IEnumerable<Orders>
+@{ ViewData["Title"] = "Index"; }
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Orders</h2>
+    </div>
+    @*<div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; New Tag Name</a>
+    </div>*@
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(c => c.OrderDate)
+            </th>>
+            <th>
+                @Html.DisplayNameFor(c => c.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.PhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.Address)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+        <partial name="_TagPageButtonPartial" model="@item.Id" />
+        </td>
+    </tr>
+}
+    </table>
+</div>
+
