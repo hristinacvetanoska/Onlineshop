@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Onlineshop.Data;
 using Onlineshop.Models;
@@ -6,6 +7,8 @@ using Onlineshop.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Onlineshop.Areas.Customer.Controllers
 {
     [Area("Customer")]
@@ -24,7 +27,7 @@ namespace Onlineshop.Areas.Customer.Controllers
         }
 
         //Get Checkout action method
-        //[Authorize]
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();

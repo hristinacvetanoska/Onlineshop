@@ -32,5 +32,10 @@ namespace Onlineshop.Models
         public int ProductTypeId { get; set; }
         [ForeignKey("ProductTypeId")]
         public ProductTypes ProductTypes { get; set; }
+
+
+        public virtual List<OrderDetails> OrderDetails { get; set; }
     }
+
+    
 }

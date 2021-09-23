@@ -3,12 +3,20 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-Onlineshop-A8C73E23-63B1-4B6C-9D52-478039789B8D</UserSecretsId>
+
+	  <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+	  <ApplicationIcon />
+
+	  <StartupObject />
+
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="AlertifyJS" Version="1.11.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
       <PrivateAssets>all</PrivateAssets>

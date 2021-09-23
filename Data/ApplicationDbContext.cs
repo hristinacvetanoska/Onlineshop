@@ -19,5 +19,12 @@ namespace Onlineshop.Data
         public DbSet<Orders> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    base.OnModelCreating(builder);
+        //        builder.Entity<OrderDetails>()
+        //        .HasKey(x => new { x.PorductId, x.OrderId });
+        //}
     }
 }

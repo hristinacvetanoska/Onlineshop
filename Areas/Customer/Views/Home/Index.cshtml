@@ -12,13 +12,8 @@
     {
         <div class="col-4">
             <div class="card mb-4">
-                @*<div class="card-header">
-                    <h3 class="my-0 font-weight-normal">
-                        <label style="font-size: 23px; color: steelblue">@product.Name</label>
-                    </h3>
-                </div>*@
                 <a asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
-                    <img src="~/@product.Image" alt="Card Image" class="card-img-top" style="height: 380px;" />
+                    <img src="~/@product.Image" alt="Card Image" class="card-img-top" style="height: 380px; " />
                 </a>
                 
                 <div class="card-header">
@@ -36,6 +31,7 @@
         </div>
     }
 </div>
+
 <div style="font-size:24 pt; align-content:center">
     @Html.PagedListPager(Model, c => Href("~/Customer/Home/Index?page=" + c), PagedListRenderOptionsBase.PageNumbersOnly)
 </div>
