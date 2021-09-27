@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Onlineshop.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Onlineshop.Data
 {
@@ -23,8 +20,11 @@ namespace Onlineshop.Data
         //protected override void OnModelCreating(ModelBuilder builder)
         //{
         //    base.OnModelCreating(builder);
-        //        builder.Entity<OrderDetails>()
-        //        .HasKey(x => new { x.PorductId, x.OrderId });
-        //}
+        //    builder.Entity<OrderDetails>()
+        //    .HasOne<Orders>(p => p.Order)
+        //    .WithMany(p => p.OrderDetails)
+        //    .HasForeignKey(p => p.OrderId);
+        //    //.HasKey(x => new { x.PorductId, x.OrderId });
+        }
     }
-}
+

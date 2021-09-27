@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 
 namespace Onlineshop.Models
 {
@@ -25,16 +24,16 @@ namespace Onlineshop.Models
         [Display(Name = "Special Tag")]
         public int SpecialTagId { get; set; }
         [ForeignKey("SpecialTagId")]
-        public SpecialTag SpecialTag { get; set; }
+        public virtual SpecialTag SpecialTag { get; set; }
 
         [Required]
         [Display(Name = "Product Type")]
         public int ProductTypeId { get; set; }
         [ForeignKey("ProductTypeId")]
-        public ProductTypes ProductTypes { get; set; }
+        public virtual ProductTypes ProductTypes { get; set; }
 
 
-        public virtual List<OrderDetails> OrderDetails { get; set; }
+        //public virtual List<OrderDetails> OrderDetails { get; set; }
     }
 
     

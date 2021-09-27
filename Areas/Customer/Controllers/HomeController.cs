@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Onlineshop.Data;
 using Onlineshop.Models;
 using Onlineshop.Utility;
+using Onlineshop.ViewModel;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using X.PagedList;
 
 namespace Onlineshop.Controllers
@@ -22,9 +25,28 @@ namespace Onlineshop.Controllers
             _db = db;
         }
 
-        public IActionResult Index(int? page)
+        public async Task<IActionResult> Index(string type, string SortBy)
         {
-            return View(_db.Products.Include(c => c.ProductTypes).Include(c => c.SpecialTag).ToList().ToPagedList(page??1,6));
+            IQueryable<Products> products = _db.Products.AsQueryable();
+            IQueryable<string> typeQuery = _db.Products.OrderBy(m => m.ProductTypes.ProductType).Select(m => m.ProductTypes.ProductType).Distinct();
+            if (!string.IsNullOrEmpty(type))
+            {
+                products = products.Where(x => x.ProductTypes.ProductType == type);
+            }
+            if (SortBy == "Price- Low to High")
+            {
+                products = products.OrderBy(x => x.Price);
+            }
+            if(SortBy == "Price- High to Low")
+            {
+                products = products.OrderByDescending(x => x.Price);
+            }
+            var vm = new ProductTypeFilter
+            {
+                Types = new SelectList(await typeQuery.ToListAsync()),
+                Product = await products.ToListAsync()
+            };
+            return View(vm);
         }
 
         public IActionResult Privacy()

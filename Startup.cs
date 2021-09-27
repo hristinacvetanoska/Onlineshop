@@ -35,9 +35,11 @@ namespace Onlineshop
             services.AddSession(options =>
             {
                 // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.IdleTimeout = TimeSpan.FromSeconds(60);
+                //FromMinutes(30);
                 //options.Cookie.HttpOnly = true;
                 // Make the session cookie essential
+                options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
             
@@ -79,8 +81,8 @@ namespace Onlineshop
             app.UseSession();
 
             app.UseRouting();
-
             app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
